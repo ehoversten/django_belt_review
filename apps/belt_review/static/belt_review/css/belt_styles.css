@@ -1,0 +1,10 @@
+/* * {
+  margin: 0px auto:
+} */
+
+fieldset {
+  display: inline-block;
+  vertical-align: top;
+  width: 400px;
+  height: 400px;
+}

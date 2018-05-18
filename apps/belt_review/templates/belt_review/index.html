@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Python/Django Belt Review</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'belt_review/css/belt_styles.css' %}">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="navbar">
+          <h1>Assignment: Belt Reviewer</h1>
+        </div>
+      </div>
+      <div class="container">
+        <div class="register">
+          <fieldset>
+            <legend><h3>Register</h3></legend>
+            <form class="form-group" action="/register" method="post">
+              {% csrf_token %}
+              <input type="text" name="fname" placeholder="First Name" value="">
+              <input type="text" name="lname" placeholder="Last Name" value="">
+              <input type="text" name="email" placeholder="Email" value="">
+              <input type="password" name="password" placeholder="Password" value="">
+              <input class="btn btn-primary" type="submit" name="" value="Register">
+            </form>
+          </fieldset>
+        </div>
+        <div class="login">
+          <fieldset>
+            <legend><h3>Login</h3></legend>
+            <form class="form-group" action="/login" method="post">
+              {% csrf_token %}
+              <input type="text" name="email" placeholder="Email" value="">
+              <input type="password" name="password" placeholder="Password" value="">
+              <input class="btn btn-primary" type="submit" name="" value="Login">
+            </form>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
