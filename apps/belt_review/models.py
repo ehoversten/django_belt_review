@@ -30,14 +30,14 @@ class UserManager(models.Manager):
             errors.append("Last name field cannot be at least 2 characters")
         if not form['email']:
             errors.append("First name field cannot be at least 2 characters")
-        elif not ValidateEmail(form['email']):
+        elif not ValidatedEmail(form['email']):
             errors.append("Must be valid email")
-        if len(form['passowrd']) < 6:
+        if len(form['password']) < 6:
             errors.append("Email must be at least 5 characters")
 
         if not errors:
             hash_gen = bcrypt.hashpw(form['password'].encode(), bcrypt.gensalt())
-            user = User.models.create(fname=form['fname'], lname=form['lname'], email=form['email'], password=hash_gen)
+            user = User.objects.create(fname=form['fname'], lname=form['lname'], email=form['email'], password=hash_gen)
             return(True, user)
         else:
             return(False, errors)
@@ -54,7 +54,7 @@ class User(models.Model):
     def __repr__(self):
         return "<User: {}|{} {} | {}>".format(self.id, self.fname, self.lname, self.email)
 
-    object = UserManager()
+    objects = UserManager()
 
 
 class Product(models.Model):
